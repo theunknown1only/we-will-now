@@ -1,0 +1,491 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,400i,700");
+html { 
+  height: 100%; 
+  background: #1A2A3A;  
+  color: #FFF; 
+  overflow-x: hidden;
+  
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  display:flex;
+ position:absolute;
+ left: 150px
+ 
+ 
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+  position: relative;
+  transition-property: clip-path, opacity;
+  transition-duration: 900ms, 300ms;
+  transition-timing-function: cubic-bezier(.5, 0, .5, 1);
+}
+.slider {
+  position:relative;
+  display: flex;
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+  .status {
+    display: flex;
+    justify-content: center;
+    display:flex;
+    overflow-x:hidden ;
+    .stat {
+      width:10px;
+      height:10px;
+      background-color:transparent;
+      border-radius:50%;
+      z-index:11;
+      margin: 0px 5px;
+      border: 2px solid #fff;
+  
+    }
+    .stat[data-active] {
+      background-color:#fff;
+    }
+  }
+  
+  img {
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    
+
+  }
+  .image {
+    width: 100%;
+    margin-right: -100%;
+    opacity: 0;
+    display: block;
+
+
+    img {
+      clip-path: circle(50px at 5vw 50%);
+     }
+  }
+  .image[data-active] {
+    opacity:1;
+    img {
+      clip-path: circle(100vmax at 50% 50%);
+    }
+  }
+  .image[data-active] ~.image {
+    opacity: 0;
+    img{
+      clip-path: circle(50px at 95vw 50%);
+    }
+  }
+  svg {
+   height: 30px;
+    position:absolute;
+    top:50%;
+    margin-top:-15px;
+    z-index: 1000;
+    cursor: pointer;
+    overflow:visible;
+    path {
+      stroke: #666;
+      stroke-linecap:round;
+      stroke-width:12px;
+      fill:transparent;
+      
+    }
+    circle {
+      fill: #fff9;
+    }
+    &#next {
+      right:45vw;
+
+    }
+    &#prev {
+      left:1.5vw;
+    }
+  }
+}
+.dwf {
+  position:fixed;
+  bottom:4px;
+  right:10px;
+  background-color:#0003;
+  padding:3px;
+  border-radius:3px;
+  
+}
+
+
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  position: relative;
+  padding: 0 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 0;
+  box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
+  background-color: hsl(210deg 100% 44%);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 31ms cubic-bezier(.5, .7, .4, 1);
+ }
+ 
+ button:before {
+  content: attr(alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 4px;
+  opacity: 1;
+ }
+ 
+ button:active {
+  box-shadow: none;
+  transform: translateY(7px);
+  transition: 35ms cubic-bezier(.5, .7, .4, 1);
+ }
+ 
+ button:hover:before {
+  transition: all .0s;
+  transform: translateY(100%);
+  opacity: 0;
+ }
+ 
+ button i {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-style: normal;
+  transition: all 2s ease;
+  transform: translateY(-20px);
+  opacity: 0;
+ }
+ 
+ button:hover i {
+  transition: all .2s ease;
+  transform: translateY(0px);
+  opacity: 1;
+ }
+ 
+ button:hover i:nth-child(1) {
+  transition-delay: 0.045s;
+ }
+ 
+ button:hover i:nth-child(2) {
+  transition-delay: calc(0.045s * 3);
+ }
+ 
+ button:hover i:nth-child(3) {
+  transition-delay: calc(0.045s * 4);
+ }
+ 
+ button:hover i:nth-child(4) {
+  transition-delay: calc(0.045s * 5);
+ }
+ 
+ button:hover i:nth-child(6) {
+  transition-delay: calc(0.045s * 6);
+ }
+ 
+ button:hover i:nth-child(7) {
+  transition-delay: calc(0.045s * 7);
+ }
+ 
+ button:hover i:nth-child(8) {
+  transition-delay: calc(0.045s * 8);
+ }
+ 
+ button:hover i:nth-child(9) {
+  transition-delay: calc(0.045s * 9);
+ }
+ 
+ button:hover i:nth-child(10) {
+  transition-delay: calc(0.045s * 10);
+ }
+ 
+ 
+ 
+ 
+ button,button::after {
+   padding: 10px 50px;
+   font-size: 20px;
+   border: none;
+   border-radius: 5px;
+   color: white;
+   background-color: transparent;
+   position: relative;
+ }
+ 
+ button::after {
+   --move1: inset(50% 50% 50% 50%);
+   --move2: inset(31% 0 40% 0);
+   --move3: inset(39% 0 15% 0);
+   --move4: inset(45% 0 40% 0);
+   --move5: inset(45% 0 6% 0);
+   --move6: inset(14% 0 61% 0);
+   clip-path: var(--move1);
+   content: 'GLITCH';
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   display: block;
+ }
+ 
+ button:hover::after {
+   animation: glitch_4011 1s;
+   text-shadow: 10 10px 10px black;
+   animation-timing-function: steps(2, end);
+   text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #E94BE8;
+   background-color: transparent;
+   border: 3px solid rgb(0, 255, 213);
+ }
+ 
+ button:hover {
+   text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #E94BE8;
+ }
+ 
+ button:hover {
+   background-color: transparent;
+   border: 1px solid rgb(0, 255, 213);
+   box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+ }
+ 
+ @keyframes glitch_4011 {
+   0% {
+     clip-path: var(--move1);
+     transform: translate(0px,-10px);
+   }
+ 
+   10% {
+     clip-path: var(--move2);
+     transform: translate(-10px,10px);
+   }
+ 
+   20% {
+     clip-path: var(--move3);
+     transform: translate(10px,0px);
+   }
+ 
+   30% {
+     clip-path: var(--move4);
+     transform: translate(-10px,10px);
+   }
+ 
+   40% {
+     clip-path: var(--move5);
+     transform: translate(10px,-10px);
+   }
+ 
+   50% {
+     clip-path: var(--move6);
+     transform: translate(-10px,10px);
+   }
+ 
+   60% {
+     clip-path: var(--move1);
+     transform: translate(10px,-10px);
+   }
+ 
+   70% {
+     clip-path: var(--move3);
+     transform: translate(-10px,10px);
+   }
+ 
+   80% {
+     clip-path: var(--move2);
+     transform: translate(10px,-10px);
+   }
+ 
+   90% {
+     clip-path: var(--move4);
+     transform: translate(-10px,10px);
+   }
+ 
+   100% {
+     clip-path: var(--move1);
+     transform: translate(0);
+   }
+ }
+ 
+ 
+ 
+ button {
+   position: relative;
+   width: 11em;
+   height: 4em;
+   outline: none;
+   transition: 0.1s;
+   background-color: transparent;
+   border: none;
+   font-size: 13px;
+   font-weight: bold;
+   color: #ddebf0;
+ }
+ 
+ #clip {
+   --color: #2761c3;
+   position: absolute;
+   top: 0;
+   overflow: hidden;
+   width: 100%;
+   height: 100%;
+   border: 5px double var(--color);
+   box-shadow: inset 0px 0px 15px #195480;
+   -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+ }
+ 
+ .arrow {
+   position: absolute;
+   transition: 0.2s;
+   background-color: #2761c3;
+   top: 35%;
+   width: 11%;
+   height: 30%;
+ }
+ 
+ #leftArrow {
+   left: -13.5%;
+   -webkit-clip-path: polygon(100% 0, 100% 100%, 0 50%);
+ }
+ 
+ #rightArrow {
+   -webkit-clip-path: polygon(100% 49%, 0 0, 0 100%);
+   left: 102%;
+ }
+ 
+ button:hover #rightArrow {
+   background-color: #27c39f;
+   left: -15%;
+   animation: 0.6s ease-in-out both infinite alternate rightArrow8;
+ }
+ 
+ button:hover #leftArrow {
+   background-color: #27c39f;
+   left: 103%;
+   animation: 0.6s ease-in-out both infinite alternate leftArrow8;
+ }
+ 
+ .corner {
+   position: absolute;
+   width: 4em;
+   height: 4em;
+   background-color: #2761c3;
+   box-shadow: inset 1px 1px 8px #2781c3;
+   transform: scale(1) rotate(45deg);
+   transition: 0.2s;
+ }
+ 
+ #rightTop {
+   top: -1.98em;
+   left: 91%;
+ }
+ 
+ #leftTop {
+   top: -1.96em;
+   left: -3.0em;
+ }
+ 
+ #leftBottom {
+   top: 2.10em;
+   left: -2.15em;
+ }
+ 
+ #rightBottom {
+   top: 45%;
+   left: 88%;
+ }
+ 
+ button:hover #leftTop {
+   animation: 0.1s ease-in-out 0.05s both changeColor8,
+   0.2s linear 0.4s both lightEffect8;
+ }
+ 
+ button:hover #rightTop {
+   animation: 0.1s ease-in-out 0.15s both changeColor8,
+   0.2s linear 0.4s both lightEffect8;
+ }
+ 
+ button:hover #rightBottom {
+   animation: 0.1s ease-in-out 0.25s both changeColor8,
+   0.2s linear 0.4s both lightEffect8;
+ }
+ 
+ button:hover #leftBottom {
+   animation: 0.1s ease-in-out 0.35s both changeColor8,
+   0.2s linear 0.4s both lightEffect8;
+ }
+ 
+ button:hover .corner {
+   transform: scale(1.25) rotate(45deg);
+ }
+ 
+ button:hover #clip {
+   animation: 0.2s ease-in-out 0.55s both greenLight8;
+   --color: #27c39f;
+ }
+ 
+ @keyframes changeColor8 {
+   from {
+     background-color: #2781c3;
+   }
+ 
+   to {
+     background-color: #27c39f;
+   }
+ }
+ 
+ @keyframes lightEffect8 {
+   from {
+     box-shadow: 1px 1px 5px #27c39f;
+   }
+ 
+   to {
+     box-shadow: 0 0 2px #27c39f;
+   }
+ }
+ 
+ @keyframes greenLight8 {
+   from {
+   }
+ 
+   to {
+     box-shadow: inset 0px 0px 32px #27c39f;
+   }
+ }
+ 
+ @keyframes leftArrow8 {
+   from {
+     transform: translate(0px);
+   }
+ 
+   to {
+     transform: translateX(10px);
+   }
+ }
+ 
+ @keyframes rightArrow8 {
+   from {
+     transform: translate(0px);
+   }
+ 
+   to {
+     transform: translateX(-10px);
+   }
+ }
+ 
+ 
+ 
